@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BMI 계산기?</title>
+<link rel="stylesheet" href="css/info.css">
+<script type="text/javascript" src="js/BMICalc.js"></script>
+</head>
+<body>
+	<form action="BMIOutput.jsp" method="post" name="ff" onsubmit="return start();" enctype="multipart/form-data">
+		<table id="maintable" align="center" border="1">
+			<tr>
+				<td align="center" style="font-size: 60px" colspan="2">BMI 계산기
+				</td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td class="inputT" align="right"><input name="names" maxlength="4" autofocus="autofocus" placeholder="2~4 글자"></td>
+			</tr>
+			<tr>
+				<td>키</td>
+				<td class="inputT" align="right"><input name="height" maxlength="5" placeholder="100cm ~ 250cm"></td>
+			</tr>
+			<tr>
+				<td>몸무게</td>
+				<td class="inputT" align="right"><input name="weight" maxlength="5" placeholder="10kg ~ 150kg"></td>
+			</tr>
+
+			<tr>
+				<td>사진</td>
+				<td align="center"><label for="file">
+						<div class="btn-upload" style="background-color: gray; border-color: white; border-radius: 5px;">파일
+							업로드하기</div>
+				</label> <input name="photo" class="photoButton"
+					style="font-family: 'n'; display: none;" type="file" id="file"></td>
+			</tr>
+			<tr>
+				<td align="center" colspan="2">
+					<button type="submit">계산하기</button>
+				</td>
+			</tr>
+
+		</table>
+	</form>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="JiValidChecker.js"></script>
+<script type="text/javascript">
+	function checkValid() {
+		let idBox = document.ff.idid;
+		let pwBox = document.ff.pwpw;
+		let pwCheckBox = document.ff.pwChk;
+		let footBox = document.ff.foot;
+		let photoBox = document.ff.photo;
+		//alert(idBox.value);
+
+		if (isEmpty(idBox) || atLeastLetter(idBox, 5) || containsAnother(idBox)) {
+			alert('ID 입력 규칙을 따라주세요.\n(필수,5~10글자,한글/특문 사용 불가)');
+			idBox.value = "";
+			idBox.focus();
+			return false;
+		} else if (isEmpty(pwBox) || atLeastLetter(pwBox, 5)
+				|| notContains(pwBox, "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_<>")) {
+			alert('PW 입력 규칙을 따라주세요.\n(필수,5~10글자)');
+			pwBox.value = "";
+			pwBox.focus();
+			return false;
+		} else if (isEmpty(pwCheckBox) || notEqualPw(pwBox, pwCheckBox)) {
+			alert('PW 확인 입력 규칙을 따라주세요.\n(필수,PW와 같을 것)');
+			pwCheckBox.value = "";
+			pwCheckBox.focus();
+			return false;
+		} else if (isEmpty(footBox) ||  atLeastLetter(footBox, 3) || isNotNumber(footBox)) {
+			alert('발 사이즈 입력 규칙을 따라주세요.\n(필수, 숫자만 입력,숫자는 3자리 이상)');
+			footBox.value = "";
+			footBox.focus();
+			return false;
+		} else if (isEmpty(photoBox) || (isNotType(photoBox, 'gif') && isNotType(photoBox, 'png') && isNotType(photoBox, 'jpg'))) {
+			alert('사진 업로드 규칙을 따라주세요.\n(필수,gif/png/jpg 파일만 가능!)');
+			photoBox.value = "";
+			photoBox.focus();
+			return false;
+		}
+
+		return true;
+	}
+</script>
+</head>
+<body>
+
+	<form action="??" name="ff" onsubmit="return checkValid();"
+		method="post" enctype="multipart/form-data">
+		<table id="maintable" border=1 align="center"
+			style='margin-top: 200px'>
+			<tr>
+				<td>id<input name="idid" id="id" maxlength="10"
+					autofocus="autofocus" placeholder="필수,5~10글자,한글/특문 불가"
+					style='margin-left: 115px'>
+				</td>
+			</tr>
+			<tr>
+				<td>password<input name="pwpw" id="pw" maxlength="10"
+					type="password" placeholder="필수,5~10 글자" style='margin-left: 47px'>
+				</td>
+			</tr>
+			<tr>
+				<td>password 확인<input name="pwChk" id="checkPw" maxlength="10"
+					placeholder="필수,5~10 글자">
+				</td>
+			</tr>
+			<tr>
+				<td>발사이즈<input name="foot" id="footsize" placeholder="발사이즈 입력"
+					maxlength="3" style='margin-left: 51px'>
+				</td>
+			</tr>
+			<tr>
+				<td align="center">사진 : <input name="photo" type="file"
+					id="file">
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<button id="sub">입력 완료</button>
+				</td>
+			</tr>
+
+		</table>
+	</form>
+
+</body>
+</html>
